@@ -7,7 +7,7 @@ export default function DashboardBento() {
   const [meds, setMeds] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/health/metrics')
+    fetch('/api/health/metrics')
       .then(res => res.json())
       .then(d => setData(d))
       .catch(e => {
@@ -21,7 +21,7 @@ export default function DashboardBento() {
         });
       });
 
-    fetch('http://localhost:3001/api/medications')
+    fetch('/api/medications')
       .then(res => res.json())
       .then(d => setMeds(d.data || []))
       .catch(e => {
