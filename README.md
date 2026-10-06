@@ -108,9 +108,25 @@ npm run build
 
 ---
 
-## 🎯 Ready for Deployment
+## 🎯 Deployment & Cloud Hosting
 
-**Frontend** → Vercel (deploy `dist/` folder)
-**Backend** → Railway/Render (push backend folder with .env)
+### Live Serverless Deployment on Vercel
+The project is configured for **1-Click Fullstack Deployment on Vercel** using native ESM Serverless Functions located in the `/api` directory:
+- `api/chat.js` &rarr; `POST /api/chat` (Groq LLM AI inference with PubMed research enrichment)
+- `api/health/metrics.js` &rarr; `GET /api/health/metrics` (Vitals & clinical analysis)
+- `api/medications.js` &rarr; `GET /api/medications` (RxNorm & FDA live safety feeds)
+- `api/index.js` &rarr; `GET /api` (Serverless health status)
 
-All systems are go! 🚀
+#### Open Public Testing on Vercel:
+1. Under **Settings &rarr; Deployment Protection**, set **Vercel Authentication** to **Disabled** to make all test links publicly accessible without login.
+2. Under **Settings &rarr; Environment Variables**, add `GROQ_API_KEY` for live AI chat inference.
+3. Link your GitHub repository (`Toufeeqshaik/project_01`) under **Settings &rarr; Git** for automatic deployments on push.
+
+---
+
+## 📱 Multi-Device & Mobile LAN Testing
+The application uses relative `/api` paths and Vite proxy routing. Any device on the same local network can test the full app:
+```bash
+npm run dev -- --host 0.0.0.0
+# Access from mobile: http://<YOUR_LOCAL_IP>:5173
+```
