@@ -50,19 +50,14 @@ export default function CopilotChat() {
         content: m.content
       }));
 
-      const response = await fetch("https://integrate.api.nvidia.com/v1/chat/completions", {
+      const response = await fetch("/api/chat", {
         method: "POST",
         headers: {
-          "Authorization": "Bearer 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",
-          "Content-Type": "application/json",
-          "Accept": "application/json"
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          messages: apiMessages,
-          model: "moonshotai/kimi-k3",
-          max_tokens: 16384,
-          temperature: 1,
-          stream: false
+          message: input,
+          context: apiMessages
         })
       });
 
@@ -75,7 +70,7 @@ export default function CopilotChat() {
       const aiMsg: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: data.choices[0]?.message?.content || "I'm sorry, I couldn't process that response.",
+        content: data.message || data.reply || "I'm sorry, I couldn't process that response.",
         timestamp: new Date()
       };
       
