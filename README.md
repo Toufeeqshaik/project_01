@@ -1,14 +1,26 @@
-# PulseAI - Altrix Labs Edition | Complete Setup Guide
+# PulseAI - Altrix Labs Edition | AI Health Copilot
 
-## ✅ Project Status: PRODUCTION READY
+[![React](https://img.shields.io/badge/Frontend-React%20%2B%20Vite%20%2B%20Tailwind-blue)](http://localhost:5173)
+[![Backend](https://img.shields.io/badge/Backend-Express%20%2B%20Node.js-green)](http://localhost:3001)
+[![AI](https://img.shields.io/badge/AI-Groq%20LLM%20%2B%20PubMed-emerald)](https://groq.com)
 
-**PulseAI** is a complete, full-stack AI health copilot with:
-- Dark theme UI (Jet-Black #0A0A0A + Kinetic Emerald #00D26A)
-- Bento Grid dashboard with 6 responsive tiles
-- Floating AI copilot with chat
-- Express backend with free APIs (RxNorm, FDA, PubMed, Groq)
-- Supabase integration ready
-- Production build complete
+**PulseAI** is a clinical-grade health copilot web application.
+- 🌙 **Dark Jet-Black (#0A0A0A) & Kinetic Emerald (#00D26A)** aesthetic design
+- 📊 **Interactive Bento Grid Dashboard** with live vitals, clinical metrics, anomaly tracking & appointments
+- 🤖 **Floating AI Copilot** powered by high-speed Groq LLM inference with automated fallback models and PubMed research lookup
+- 💊 **Medication & Drug Intelligence** backed by RxNorm and FDA APIs
+- 🗄️ **Supabase Integration** ready for persistent health logs and records
+
+---
+
+## 🖥️ How the Application Works & How to View
+
+| Component | Port | Description |
+|---|---|---|
+| **Frontend UI (Dashboard & Chat)** | `http://localhost:5173` | 👉 **Open this in your browser** to view the full visual dashboard and interact with the AI copilot! |
+| **Backend API Server** | `http://localhost:3001` | Express REST API handling Groq AI inference, PubMed, and medical endpoints. |
+
+> 💡 **Notice:** `http://localhost:3001` is the backend REST API server (visiting it will show the API status page). To view and interact with the visual web interface, navigate to **`http://localhost:5173`**.
 
 ---
 
@@ -69,24 +81,27 @@ npm run build
 
 | Endpoint | Method | Purpose |
 |----------|--------|---------|
-| `/api/health/metrics` | GET | Dashboard vitals |
-| `/api/chat` | POST | Groq AI + PubMed |
-| `/api/medications` | GET | Drug info (RxNorm/FDA) |
+| `/` | GET | API Server Status & Frontend Link |
+| `/api/health/metrics` | GET | Dashboard vitals & clinical metrics |
+| `/api/health/records` | GET | Lab reports & medical records |
+| `/api/chat` | POST | Groq AI clinical chat + PubMed lookup |
+| `/api/chat/send` | POST | Alias for `/api/chat` |
+| `/api/medications` | GET | Drug info (RxNorm / FDA) |
 
 ---
 
 ## 📊 Build Status
 
-**Frontend**: ✅ Built successfully (157.96 KB JS, 31.66 KB CSS)
+**Frontend**: ✅ Built successfully (React 18, TypeScript, Tailwind)
 **Backend**: ✅ Running on http://localhost:3001
-**TypeScript**: ✅ No errors
+**TypeScript**: ✅ 0 errors
 
 ---
 
 ## 🌐 Free APIs Integrated
 
-- **Groq AI** - Chat completions (llama3-8b-8192)
-- **PubMed** - Medical research articles
+- **Groq AI** - Ultra-fast LLM inference (`openai/gpt-oss-120b`, `qwen/qwen3.8-27b`, `openai/gpt-oss-20b`)
+- **PubMed** - Medical research & clinical paper references
 - **RxNorm** - Drug information database
 - **FDA** - Drug safety data
 - **Supabase** - PostgreSQL database
