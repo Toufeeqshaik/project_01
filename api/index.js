@@ -1,19 +1,13 @@
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
+export default function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
 
-// API Endpoints
-app.use('/api/health', require('../backend/routes/health'));
-app.use('/api/chat', require('../backend/routes/chat'));
-app.use('/api/medications', require('../backend/routes/medications'));
-
-// Root handler for API
-app.get('/api', (req, res) => {
-  res.json({
+  return res.status(200).json({
     status: 'online',
     service: 'PulseAI Serverless API on Vercel',
     endpoints: {
@@ -22,6 +16,5 @@ app.get('/api', (req, res) => {
       medications: '/api/medications'
     }
   });
-});
+}
 
-module.exports = app;
